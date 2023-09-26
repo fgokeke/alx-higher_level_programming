@@ -4,14 +4,12 @@ that defines a square"""
 
 
 class Square:
-    """A class Square that defines a square by:
-        (based on 0-square."""
-
-
+    """a class Square that defines a square by:
+        (based on 0-square.py)."""
     def __init__(self, size):
         """To initialize a new square.
-
+        
         Args:
-            size(int): the size of the square.
+            size (int): size of the square.
         """
-        self._size = size
+        self.__size = size
