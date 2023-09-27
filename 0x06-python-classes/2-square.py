@@ -2,6 +2,7 @@
 """A python script with a class Square
 that defines a square"""
 
+
 class Square:
     """a class Square that defines a square."""
 
