@@ -17,3 +17,10 @@ In the following code, do a and b point to the same object? Answer with Yes or N
 
 >>> a = 89
 >>> b = 100
+
+3. Right count =
+mandatory
+In the following code, do a and b point to the same object? Answer with Yes or No.
+
+>>> a = 89
+>>> b = 89
