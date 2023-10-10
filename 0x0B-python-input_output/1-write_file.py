@@ -5,7 +5,8 @@ text file (UTF8) and returns the number of characters written"""
 
 def write_file(filename="", text=""):
     """
-    Write a string to a UTF-8 text file and return the number of characters written.
+    Write a string to a UTF-8 text file and return
+    the number of characters written.
 
     Parameters:
     filename (str): The name of the file to write to.
