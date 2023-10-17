@@ -187,6 +187,107 @@ class TestRectangle(unittest.TestCase):
         expected_str = "[Rectangle] (42) 2/3 - 5/8"
         self.assertEqual(str(r), expected_str)
 
+    def test_update(self):
+        """
+        Test the update method of the Rectangle class.
+        """
+        r = Rectangle(5, 8, 2, 3, 42)
+
+        r.update(89)
+        self.assertEqual(str(r), "[Rectangle] (89) 2/3 - 5/8")
+
+        r.update(89, 2)
+        self.assertEqual(str(r), "[Rectangle] (89) 2/3 - 2/8")
+
+        r.update(89, 2, 3)
+        self.assertEqual(str(r), "[Rectangle] (89) 2/3 - 2/3")
+
+        r.update(89, 2, 3, 4)
+        self.assertEqual(str(r), "[Rectangle] (89) 4/3 - 2/3")
+
+        r.update(89, 2, 3, 4, 5)
+        self.assertEqual(str(r), "[Rectangle] (89) 4/5 - 2/3")
+
+    def test_update_invalid_types(self):
+        """
+        Test the update method with invalid argument types.
+        """
+        r = Rectangle(5, 8, 2, 3, 42)
+
+        with self.assertRaises(TypeError):
+            r.update(89, "2")
+
+        with self.assertRaises(TypeError):
+            r.update(89, 2, "3")
+
+    def test_update_more_than_5_args(self):
+        """
+        Test the update method with more than 5 arguments.
+        """
+        r = Rectangle(5, 8, 2, 3, 42)
+
+        r.update(89, 2, 3, 4, 5, 6, 7, 8)
+
+        self.assertEqual(str(r), "[Rectangle] (89) 4/5 - 2/3")
+
+        self.assertEqual(r.id, 89)
+        self.assertEqual(r.width, 2)
+        self.assertEqual(r.height, 3)
+        self.assertEqual(r.x, 4)
+        self.assertEqual(r.y, 5)
+
+    def test_update_invalid_args(self):
+        """
+        Test the update method with invalid values as arguments.
+        """
+        r = Rectangle(5, 8, 2, 3, 42)
+        with self.assertRaises(ValueError):
+            r.update("invalid", -2, 3.5, 4, -5)
+
+    def test_update_empty(self):
+        """
+        Test the update method with no arguments.
+        """
+        r = Rectangle(5, 8, 2, 3, 42)
+        r.update()
+
+        self.assertEqual(str(r), "[Rectangle] (42) 2/3 - 5/8")
+
+        self.assertEqual(r.id, 42)
+        self.assertEqual(r.width, 5)
+        self.assertEqual(r.height, 8)
+        self.assertEqual(r.x, 2)
+        self.assertEqual(r.y, 3)
+
+    def test_update_with_kwargs(self):
+        """
+        Test the update method with keyword arguments (kwargs).
+        """
+        r = Rectangle(5, 8, 2, 3, 42)
+        r.update(height=1, width=2, x=3, y=5, id=89)
+
+        self.assertEqual(str(r), "[Rectangle] (89) 3/5 - 2/1")
+
+    def test_update_with_mixed_args_kwargs(self):
+        """
+        Test the update method with a mix of positional and keyword arguments.
+        """
+        r = Rectangle(5, 8, 2, 3, 42)
+        r.update(89, width=2, x=3, height=1)
+
+        self.assertEqual(str(r), "[Rectangle] (89) 2/3 - 5/8")
+
+    def test_update_invalid_kwargs(self):
+        """
+        Test the update method with invalid attribute names in
+        keyword arguments.
+        """
+        r = Rectangle(5, 8, 2, 3, 42)
+
+        r.update(invalid_attr=1, invalid_attr2=2)
+
+        self.assertEqual(str(r), "[Rectangle] (42) 2/3 - 5/8")
+
 
 if __name__ == '__main__':
     unittest.main()
