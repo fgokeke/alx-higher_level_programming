@@ -288,6 +288,71 @@ class TestRectangle(unittest.TestCase):
 
         self.assertEqual(str(r), "[Rectangle] (42) 2/3 - 5/8")
 
+    def test_to_dictionary(self):
+        """
+        Test the to_dictionary method for the Rectangle.
+        """
+        r = Rectangle(5, 8, 2, 3, 42)
+        rect_dict = r.to_dictionary()
+        expected_dict = {
+            'id': 42,
+            'width': 5,
+            'height': 8,
+            'x': 2,
+            'y': 3
+        }
+        self.assertEqual(rect_dict, expected_dict)
+
+    def test_to_dictionary_default(self):
+        """
+        Test the to_dictionary method for the Rectangle with default values.
+        """
+        r = Rectangle(5, 8)
+        rect_dict = r.to_dictionary()
+        expected_dict = {
+            'id': r.id,
+            'width': 5,
+            'height': 8,
+            'x': 0,
+            'y': 0
+        }
+        self.assertEqual(rect_dict, expected_dict)
+
+    def test_to_dictionary_change_attributes(self):
+        """
+        Test the to_dictionary method after changing attributes.
+        """
+        r = Rectangle(5, 8, 2, 3, 42)
+        r.width = 10
+        r.height = 12
+        r.x = 7
+        r.y = 9
+        rect_dict = r.to_dictionary()
+        expected_dict = {
+            'id': 42,
+            'width': 10,
+            'height': 12,
+            'x': 7,
+            'y': 9
+        }
+        self.assertEqual(rect_dict, expected_dict)
+
+    def test_to_dictionary_after_update(self):
+        """
+        Test the to_dictionary method after using the update method.
+        """
+        r = Rectangle(5, 8, 2, 3, 42)
+        r.update(89, 10, 12, 7, 9)
+        rect_dict = r.to_dictionary()
+        expected_dict = {
+            'id': 89,
+            'width': 10,
+            'height': 12,
+            'x': 7,
+            'y': 9
+        }
+        self.assertEqual(rect_dict, expected_dict)
+
 
 if __name__ == '__main__':
     unittest.main()
