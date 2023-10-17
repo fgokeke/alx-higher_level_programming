@@ -169,6 +169,48 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(TypeError):
             s.update(id=89, x="2", size=3.5, y=4)
 
+    def test_to_dictionary(self):
+        """
+        Test the to_dictionary method for the Square.
+        """
+        s = Square(5, 2, 3, 42)
+        square_dict = s.to_dictionary()
+        expected_dict = {
+            'id': 42,
+            'size': 5,
+            'x': 2,
+            'y': 3
+        }
+        self.assertEqual(square_dict, expected_dict)
+
+    def test_to_dictionary_default(self):
+        """
+        Test the to_dictionary method for a Square with default values.
+        """
+        s = Square(5)
+        square_dict = s.to_dictionary()
+        expected_dict = {
+            'id': s.id,
+            'size': 5,
+            'x': 0,
+            'y': 0
+        }
+        self.assertEqual(square_dict, expected_dict)
+
+    def test_to_dictionary_no_id(self):
+        """
+        Test the to_dictionary method for a Square with no specified ID.
+        """
+        s = Square(5, 2, 3)
+        square_dict = s.to_dictionary()
+        expected_dict = {
+            'id': s.id,
+            'size': 5,
+            'x': 2,
+            'y': 3
+        }
+        self.assertEqual(square_dict, expected_dict)
+
 
 if __name__ == '__main__':
     unittest.main()
