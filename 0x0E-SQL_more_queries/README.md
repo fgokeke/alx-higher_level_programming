@@ -49,3 +49,42 @@ id INT with the default value 1 and must be unique
 name VARCHAR(256)
 The database name will be passed as an argument of the mysql command
 If the table unique_id already exists, your script should not fail
+
+6. States table
+mandatory
+Write a script that creates the database hbtn_0d_usa and the table states (in the database hbtn_0d_usa) on your MySQL server.
+
+states description:
+id INT unique, auto generated, can’t be null and is a primary key
+name VARCHAR(256) can’t be null
+If the database hbtn_0d_usa already exists, your script should not fail
+If the table states already exists, your script should not fail
+
+7. Cities table
+mandatory
+Write a script that creates the database hbtn_0d_usa and the table cities (in the database hbtn_0d_usa) on your MySQL server.
+
+cities description:
+id INT unique, auto generated, can’t be null and is a primary key
+state_id INT, can’t be null and must be a FOREIGN KEY that references to id of the states table
+name VARCHAR(256) can’t be null
+If the database hbtn_0d_usa already exists, your script should not fail
+If the table cities already exists, your script should not fail
+
+8. Cities of California
+mandatory
+Write a script that lists all the cities of California that can be found in the database hbtn_0d_usa.
+
+The states table contains only one record where name = California (but the id can be different, as per the example)
+Results must be sorted in ascending order by cities.id
+You are not allowed to use the JOIN keyword
+The database name will be passed as an argument of the mysql command
+
+9. Cities by States
+mandatory
+Write a script that lists all cities contained in the database hbtn_0d_usa.
+
+Each record should display: cities.id - cities.name - states.name
+Results must be sorted in ascending order by cities.id
+You can use only one SELECT statement
+The database name will be passed as an argument of the mysql command
