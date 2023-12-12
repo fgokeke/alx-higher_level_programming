@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-function findSecondLargest(args) {
+function findSecondLargest (args) {
   const integers = args.map(Number);
 
   if (integers.length < 2) {
@@ -14,8 +14,7 @@ function findSecondLargest(args) {
     if (num > largest) {
       secondLargest = largest;
       largest = num;
-    }
-    else if (num > secondLargest && num < largest) {
+    } else if (num > secondLargest && num < largest) {
       secondLargest = num;
     }
   }
