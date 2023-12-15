@@ -3,8 +3,14 @@
 
 
 import MySQLdb
+import sys
+
 
 if __name__ == "__main__":
+
+    if len(sys.argv) != 4:
+        sys.exit(1)
+
     conn = MySQLdb.connect(
             host="localhost",
             port=3306,
