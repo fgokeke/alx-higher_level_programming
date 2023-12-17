@@ -65,3 +65,30 @@ Results must be sorted in ascending order by cities.id
 You can use only execute() once
 Results must be displayed as they are in the example below
 Your code should not be executed when imported
+
+5. All cities by state
+mandatory
+Write a script that takes in the name of a state as an argument and lists all cities of that state, using the database hbtn_0e_4_usa
+
+Your script should take 4 arguments: mysql username, mysql password, database name and state name (SQL injection free!)
+You must use the module MySQLdb (import MySQLdb)
+Your script should connect to a MySQL server running on localhost at port 3306
+Results must be sorted in ascending order by cities.id
+You can use only execute() once
+The results must be displayed as they are in the example below
+Your code should not be executed when imported
+
+6. First state model
+mandatory
+
+
+Write a python file that contains the class definition of a State and an instance Base = declarative_base():
+
+State class:
+inherits from Base Tips
+links to the MySQL table states
+class attribute id that represents a column of an auto-generated, unique integer, can’t be null and is a primary key
+class attribute name that represents a column of a string with maximum 128 characters and can’t be null
+You must use the module SQLAlchemy
+Your script should connect to a MySQL server running on localhost at port 3306
+WARNING: all classes who inherit from Base must be imported before calling Base.metadata.create_all(engine)
