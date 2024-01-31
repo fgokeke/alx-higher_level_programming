@@ -11,8 +11,16 @@ request(apiUrl, (error, response, body) => {
   } else {
     if (response.statusCode === 200) {
       const filmsData = JSON.parse(body).results;
-      const moviesWithWedgeAntilles = filmsData.filter(movie => movie.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`));
-      console.log(`${moviesWithWedgeAntilles.length}`);
+      let moviesWithWedgeAntilles = 0;
+      for (const filmIdx in filmsData) {
+        const filmChars = filmsData[filmIdx].characters;
+        for (const charIndex in filmChars) {
+          if (filmChars[charIndex].includes(`${characterId}`)) {
+            moviesWithWedgeAntilles++;
+          }
+        }
+      }
+      console.log(`${moviesWithWedgeAntilles}`);
     } else {
       console.log(`Error: Unable to fetch films data. Status code: ${response.statusCode}`);
     }
